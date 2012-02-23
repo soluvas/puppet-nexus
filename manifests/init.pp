@@ -13,7 +13,7 @@
 # [Remember: No empty lines between comments and class definition]
 class nexus (
   $version = '2.0',
-  $mirror_url = 'http://nexus.com/'
+  $mirror_url = 'http://www.sonatype.org/downloads/'
 ) {
   $download_file = "nexus-${version}.war"
   $download_url = "${mirror_url}${download_file}"
@@ -40,23 +40,21 @@ class nexus (
   file { '/var/tmp/nexus':
   	ensure => directory,
   	owner => $tomcat::user, group => $tomcat::group,
-    require => Class['tomcat'],
-    unless => "/usr/bin/test -d '${dir}'"
+    require => Class['tomcat']
   }
   exec { nexus_extract:
-    command => "tar -xzf /var/tmp/${download_file} -C /var/tmp/nexus",
+    command => "unzip -ao /var/tmp/${download_file} -d /var/tmp/nexus",
     creates => "/var/tmp/nexus/WEB-INF",
     path => ["/bin", "/usr/bin"],
     user => $tomcat::user, group => $tomcat::group,
-    require => [ Exec['nexus_download'], File['/var/tmp/nexus'] ],
+    require => [ Exec['nexus_download'], File['/var/tmp/nexus'], Package['unzip'] ],
     unless => "/usr/bin/test -d '${dir}'"
   }
   file { '/var/tmp/nexus/WEB-INF/plexus.properties':
   	content => template('nexus/plexus.properties.erb'),
     owner => $tomcat::user, group => $tomcat::group,
     mode => 0664,
-    require => [ Class['tomcat'], Exec['nexus_extract'] ],
-    unless => "/usr/bin/test -d '${dir}'"
+    require => [ Class['tomcat'], Exec['nexus_extract'] ]
   }
   exec { nexus_move:
     command => "mv -v '/var/tmp/nexus' '${dir}'",

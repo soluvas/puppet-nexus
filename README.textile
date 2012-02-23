@@ -2,8 +2,27 @@ h1. Nexus Puppet module
 
 h2. Requires
 
+* @curl@ module
 * @tomcat@ module
+* @unzip@ package
+* @openjdk-7-jre-headless@ package or similar
 
-h2. Usage
+h2. Quickstart
 
-This is the nexus module.
+bc. package { ['curl', 'unzip']: ensure => present } 
+class { tomcat: version => 6 }
+include nexus
+
+h2. Use Your Own Mirror
+
+bc. class { nexus:
+  mirror_url => 'http://33.33.33.1:8080/nexus/content/groups/public/com/sonatype/nexus/2.0/'
+}
+
+(yes, you can serve Nexus from Nexus) ;-)
+
+Or from local file:
+
+bc. class { nexus:
+  mirror_url => 'file:///together/Technology/Project_Management/Nexus/'
+}
