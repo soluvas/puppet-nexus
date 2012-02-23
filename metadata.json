@@ -9,7 +9,7 @@
   "version": "",
   "checksums": {
     "Modulefile": "e07a9dfd10783547f0b0b1938b9dc8b3",
-    "README.textile": "ee3eeeab4b4e2a6bbafe4c6ec52c5044",
+    "README.textile": "c340b747eb8d6709a362c205c8b1f46e",
     "manifests/init.pp": "9ac7aac804672443b5d045dec5c66fce",
     "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
     "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",

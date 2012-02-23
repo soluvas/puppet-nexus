@@ -26,3 +26,20 @@ Or from local file:
 bc. class { nexus:
   mirror_url => 'file:///together/Technology/Project_Management/Nexus/'
 }
+
+h2. Advanced Configuration
+
+Usually you'll do something like this:
+
+bc. package { unzip: ensure => present }
+class { tomcat:
+  version => 6,
+  java_home => '/usr/lib/jvm/java-1.7.0-openjdk-amd64',
+}
+class { nexus:
+  mirror_url => 'http://33.33.33.1:8080/nexus/content/groups/public/com/sonatype/nexus/2.0/'
+}
+apache::vhost::proxy { "nexus.satukancinta.vm":
+	port => 80,
+	dest => 'http://localhost:8080/nexus/',
+}
