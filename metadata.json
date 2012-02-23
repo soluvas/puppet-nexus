@@ -1,0 +1,20 @@
+{
+  "name": "ceefour-nexus",
+  "author": "ceefour",
+  "description": "",
+  "license": "",
+  "project_page": "",
+  "source": "",
+  "summary": "",
+  "version": "",
+  "checksums": {
+    "Modulefile": "e07a9dfd10783547f0b0b1938b9dc8b3",
+    "README.textile": "25f730cb38a5d55fc5b5bcc2425dfdb6",
+    "manifests/init.pp": "2e286e3480d0676e040762d7e3293443",
+    "spec/spec.opts": "a600ded995d948e393fbe2320ba8e51c",
+    "spec/spec_helper.rb": "ca19ec4f451ebc7fdb035b52eae6e909",
+    "templates/plexus.properties.erb": "7116a9bf65aa6fd82f5f07d8531a2e4e",
+    "tests/init.pp": "8cae7e1262d286a7ecb3726e8072075e"
+  },
+  "dependencies": []
+}

@@ -1,0 +1,9 @@
+h1. Nexus Puppet module
+
+h2. Requires
+
+* @tomcat@ module
+
+h2. Usage
+
+This is the nexus module.
