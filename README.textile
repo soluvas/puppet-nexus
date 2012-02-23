@@ -39,6 +39,8 @@ class { tomcat:
 class { nexus:
   mirror_url => 'http://33.33.33.1:8080/nexus/content/groups/public/com/sonatype/nexus/2.0/'
 }
+# TODO: Below is not working, it should actually
+# do a normal (non-vhost) reverse proxy at "/nexus"
 apache::vhost::proxy { "nexus.satukancinta.vm":
 	port => 80,
 	dest => 'http://localhost:8080/nexus/',
